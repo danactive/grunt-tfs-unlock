@@ -15,6 +15,8 @@ module.exports = function(grunt) {
 	// creation: http://gruntjs.com/creating-tasks
 
 	grunt.registerMultiTask('tfs_unlock', 'Your task description goes here.', function() {
+		var done = grunt.task.current.async();
+
 		// Iterate over all specified file groups.
 		this.files.forEach(function(file) {
 			file.src.filter(function(filepath) {
@@ -22,10 +24,11 @@ module.exports = function(grunt) {
 				if (!grunt.file.exists(filepath)) {
 					grunt.log.warn('Source file "' + filepath + '" not found.');
 					return false;
-				} else {
-					tfs.checkout([filepath]);
-					return true;
 				}
+
+				//console.log(tfs.checkout([filepath], done));
+				console.log(tfs.undo([filepath], done));
+				return true;
 			});
 		});
 	});
