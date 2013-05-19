@@ -9,13 +9,17 @@
 'use strict';
 
 module.exports = function(grunt) {
-	var tfs = require('./../tfs-unlock.js');
 
 	// Please see the Grunt documentation for more information regarding task
 	// creation: http://gruntjs.com/creating-tasks
 
 	grunt.registerMultiTask('tfs_unlock', 'Your task description goes here.', function() {
-		var done = grunt.task.current.async();
+		var tfs = require('./../tfs-unlock.js');
+
+		tfs.init({
+			"callback": grunt.task.current.async(),
+			"visualStudioPath": tfs.vs2010.bit64
+		});
 
 		// Iterate over all specified file groups.
 		this.files.forEach(function(file) {
@@ -26,8 +30,8 @@ module.exports = function(grunt) {
 					return false;
 				}
 
-				//console.log(tfs.checkout([filepath], done));
-				console.log(tfs.undo([filepath], done));
+				//console.log(tfs.checkout([filepath]));
+				console.log(tfs.undo([filepath]));
 				return true;
 			});
 		});
