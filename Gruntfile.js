@@ -30,9 +30,22 @@ module.exports = function(grunt) {
 
 		// Configuration to be run (and then tested).
 		tfs_unlock: {
-			locked_files: {
+			checkout: {
+				options: {
+					// TFS path
+					action: 'checkout'
+				},
 				files: {
-					src: ['test/fixtures/testing', 'test/fixtures/123'],
+					src: ['C:/web/RDC/Realtor/MVC.realtor.com/Maintenance/Move.Realtor.Web/App_Data/Environment/QA.Environment.config'],
+				}
+			},
+			undo: {
+				options: {
+					// TFS path
+					action: 'undo'
+				},
+				files: {
+					src: ['C:/web/RDC/Realtor/MVC.realtor.com/Maintenance/Move.Realtor.Web/App_Data/Environment/QA.Environment.config'],
 				}
 			}
 		},
@@ -57,6 +70,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('test', ['clean', 'tfs_unlock', 'nodeunit']);
 
 	// By default, lint and run all tests.
-	grunt.registerTask('default', ['jshint', 'tfs_unlock']);
+	grunt.registerTask('default', ['jshint', 'tfs_unlock:checkout']);
+
+	grunt.registerTask('undo', ['jshint', 'tfs_unlock:undo']);
 
 };

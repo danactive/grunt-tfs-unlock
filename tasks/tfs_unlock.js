@@ -13,8 +13,9 @@ module.exports = function(grunt) {
 	// Please see the Grunt documentation for more information regarding task
 	// creation: http://gruntjs.com/creating-tasks
 
-	grunt.registerMultiTask('tfs_unlock', 'Your task description goes here.', function() {
-		var tfs = require('./../tfs-unlock.js');
+	grunt.registerMultiTask('tfs_unlock', 'Checkout TFS files', function() {
+		var tfs = require('./../tfs-unlock.js'),
+			options = this.options();
 
 		tfs.init({
 			"callback": grunt.task.current.async(),
@@ -30,8 +31,7 @@ module.exports = function(grunt) {
 					return false;
 				}
 
-				//console.log(tfs.checkout([filepath]));
-				console.log(tfs.undo([filepath]));
+				tfs[options.action]([filepath]);
 				return true;
 			});
 		});
