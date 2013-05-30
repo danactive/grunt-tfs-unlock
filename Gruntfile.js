@@ -16,16 +16,11 @@ module.exports = function(grunt) {
 			all: [
 				'Gruntfile.js',
 				'tasks/*.js',
-				'<%= nodeunit.tests %>',
+				'<%= nodeunit.tests %>'
 			],
 			options: {
 				jshintrc: '.jshintrc'
 			}
-		},
-
-		// Before generating any new files, remove any previously-created files.
-		clean: {
-			tests: ['tmp'],
 		},
 
 		// Configuration to be run (and then tested).
@@ -36,7 +31,7 @@ module.exports = function(grunt) {
 					action: 'checkout'
 				},
 				files: {
-					src: ['C:/web/RDC/Realtor/MVC.realtor.com/Maintenance/Move.Realtor.Web/App_Data/Environment/QA.Environment.config'],
+					src: []
 				}
 			},
 			undo: {
@@ -45,14 +40,14 @@ module.exports = function(grunt) {
 					action: 'undo'
 				},
 				files: {
-					src: ['C:/web/RDC/Realtor/MVC.realtor.com/Maintenance/Move.Realtor.Web/App_Data/Environment/QA.Environment.config'],
+					src: []
 				}
 			}
 		},
 
 		// Unit tests.
 		nodeunit: {
-			tests: ['test/*_test.js'],
+			tests: ['test/*_test.js']
 		}
 
 	});
@@ -62,12 +57,9 @@ module.exports = function(grunt) {
 
 	// These plugins provide necessary tasks.
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-	// Whenever the "test" task is run, first clean the "tmp" dir, then run this
-	// plugin's task(s), then test the result.
-	grunt.registerTask('test', ['clean', 'tfs_unlock', 'nodeunit']);
+	grunt.registerTask('test', ['tfs_unlock', 'nodeunit']);
 
 	// By default, lint and run all tests.
 	grunt.registerTask('default', ['jshint', 'tfs_unlock:checkout']);

@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 	// creation: http://gruntjs.com/creating-tasks
 
 	grunt.registerMultiTask('tfs_unlock', 'Checkout TFS files', function() {
-		var tfs = require('./../tfs-unlock.js'),
+		var tfs = require('./../node_modules/tfs-unlock/tfs-unlock.js'),
 			options = this.options();
 
 		tfs.init({
@@ -23,15 +23,14 @@ module.exports = function(grunt) {
 		});
 
 		// Iterate over all specified file groups.
-		this.files.forEach(function(file) {
-			file.src.filter(function(filepath) {
+		this.files.forEach(function (file) {
+			file.src.filter(function (filepath) {
 				// Warn on and remove invalid source files (if nonull was set).
 				if (!grunt.file.exists(filepath)) {
 					grunt.log.warn('Source file "' + filepath + '" not found.');
 					return false;
 				}
-
-				tfs[options.action]([filepath]);
+				console.log(tfs[options.action]([filepath]));
 				return true;
 			});
 		});
