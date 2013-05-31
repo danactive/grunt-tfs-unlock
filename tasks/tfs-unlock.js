@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 	// Please see the Grunt documentation for more information regarding task
 	// creation: http://gruntjs.com/creating-tasks
 
-	grunt.registerMultiTask('tfs_unlock', 'Checkout TFS files', function() {
+	grunt.registerMultiTask('tfs-unlock', 'Checkout TFS files', function() {
 		var tfs = require('./../node_modules/tfs-unlock/tfs-unlock.js'),
 			options = this.options();
 
