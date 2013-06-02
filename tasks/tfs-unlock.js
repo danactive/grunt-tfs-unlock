@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 
 		tfs.init({
 			"callback": grunt.task.current.async(),
-			"visualStudioPath": tfs.vs2010.bit64
+			"visualStudioPath": tfs[options.tfsPath[0]][options.tfsPath[1]]
 		});
 
 		// Iterate over all specified file groups.

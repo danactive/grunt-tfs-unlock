@@ -1,6 +1,19 @@
 'use strict';
 
-var grunt = require('grunt');
+var grunt = require('grunt'),
+tfs = require('./../node_modules/tfs-unlock/tfs-unlock.js');
+
+// Nodeunit will run any exported functions as unit tests.
+exports["tfs-unlock"] = function (test) {
+	test.ok(tfs, 'Require tfs-unlock.js dependency');
+
+	test.ok(tfs.vs2010.bit32, 'Path to Visual Studio 2010 32-bit');
+	test.ok(tfs.vs2010.bit64, 'Path to Visual Studio 2010 64-bit');
+	test.ok(tfs.vs2012.bit32, 'Path to Visual Studio 2012 32-bit');
+	test.ok(tfs.vs2012.bit64, 'Path to Visual Studio 2012 64-bit');
+
+	test.done();
+};
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -20,39 +33,4 @@ var grunt = require('grunt');
     test.throws(block, [error], [message])
     test.doesNotThrow(block, [error], [message])
     test.ifError(value)
-*/
-
-// Nodeunit will run any exported functions as unit tests.
-exports["tfs-unlock"] = function (test) {
-	var app = grunt.file.read('node_modules/tfs-unlock/tfs-unlock.js');
-	test.ok(app, 'should have tfs-unlock.js required dependency');
-
-	test.done();
-};
-
-/*
-exports["tfs-unlock"] = {
-  setUp: function(done) {
-    // setup here if necessary
-    done();
-  },
-  default_options: function(test) {
-    test.expect(1);
-
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
-
-    test.done();
-  },
-  custom_options: function(test) {
-    test.expect(1);
-
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-
-    test.done();
-  },
-};
 */

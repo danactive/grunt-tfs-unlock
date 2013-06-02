@@ -23,28 +23,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// Configuration to be run (and then tested).
-		"tfs-unlock": {
-			checkout: {
-				options: {
-					// TFS path
-					action: 'checkout'
-				},
-				files: {
-					src: []
-				}
-			},
-			undo: {
-				options: {
-					// TFS path
-					action: 'undo'
-				},
-				files: {
-					src: []
-				}
-			}
-		},
-
 		// Unit tests.
 		nodeunit: {
 			tests: ['test/*-test.js']
@@ -58,10 +36,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-	grunt.registerTask('test', ['jshint', 'nodeunit']);
-
-	grunt.registerTask('default', ['jshint', 'tfs-unlock:checkout']);
-
-	grunt.registerTask('undo', ['jshint', 'tfs-unlock:undo']);
+	grunt.registerTask('default', ['jshint', 'nodeunit']);
 
 };

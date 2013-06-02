@@ -3,9 +3,6 @@
 > Checkout Windows TFS locked files with Team Foundation Server
 
 ## Getting Started
-This plugin requires Grunt `~0.4.1`
-
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
 npm install grunt-tfs-unlock --save-dev
@@ -24,7 +21,7 @@ In your project's Gruntfile, add a section named `tfs_unlock` to the data object
 
 ```js
 grunt.initConfig({
-  tfs_unlock: {
+  tfs-unlock: {
     options: {
       // Task-specific options go here.
     },
@@ -37,48 +34,43 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.action
 Type: `String`
-Default value: `',  '`
+Default value: `checkout`
 
-A string value that is used to do something with whatever.
+The TFS command applied to the target files.  Checkout or undo are currently supported
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
+#### options.tfsPath
+Type: `String` || `Array of Strings`
 
-A string value that is used to do something else with whatever else.
+Todo: Improve enumeration, but for now pass a Windows shell path to parent location of `tf.exe`.  String path the Visual Studio folder, or use the enumerated array.  First index is Visual Studio version number vs2008, vs2010, vs2012.  Second index is software bit bit32, or bit64.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+#### Visual Studio 2010 64-bit Options
 
 ```js
 grunt.initConfig({
-  tfs_unlock: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  tfs_unlock: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+	"tfs-unlock": {
+		checkout: {
+			options: {
+				tfsPath: ["vs2010", "bit64"],
+				action: 'checkout'
+			},
+			files: {
+				src: []
+			}
+		},
+		undo: {
+			options: {
+				tfsPath: ["vs2010", "bit64"],
+				action: 'undo'
+			},
+			files: {
+				src: []
+			}
+		}
+	}
 })
 ```
 
@@ -86,4 +78,4 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+0.1.0 2013-Jun-01 First stable release to npm
