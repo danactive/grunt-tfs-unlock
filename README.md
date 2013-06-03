@@ -14,10 +14,10 @@ One the plugin has been installed, it may be enabled inside your Gruntfile with 
 grunt.loadNpmTasks('grunt-tfs-unlock');
 ```
 
-## The "tfs_unlock" task
+## The "tfs-unlock" task
 
 ### Overview
-In your project's Gruntfile, add a section named `tfs_unlock` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `tfs-unlock` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
