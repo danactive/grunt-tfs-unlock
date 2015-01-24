@@ -1,7 +1,7 @@
 {
   "name": "grunt-tfs-unlock",
   "description": "Grunt.js plugin to checkout Windows TFS locked files with Team Foundation Server",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "homepage": "https://github.com/danactive/grunt-tfs-unlock",
   "author": {
     "name": "Dan BROOKS"
@@ -27,7 +27,7 @@
     "test": "grunt"
   },
   "dependencies": {
-    "tfs-unlock": "~0.1"
+    "tfs-unlock": "~0.2"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.1.1",

@@ -43,7 +43,7 @@ The TFS command applied to the target files.  Checkout or undo are currently sup
 #### options.tfsPath
 Type: `String` || `Array of Strings`
 
-Todo: Improve enumeration, but for now pass a Windows shell path to parent location of `tf.exe`.  String path the Visual Studio folder, or use the enumerated array.  First index is Visual Studio version number vs2008, vs2010, vs2012.  Second index is software bit bit32, or bit64.
+Todo: Improve enumeration, but for now pass a Windows shell path to parent location of `tf.exe`.  String path the Visual Studio folder, or use the enumerated array.  First index is Visual Studio version number vs2008, vs2010, vs2012, vs2013.  Second index is software bit bit32, or bit64.
 
 #### options.wait
 Type: `Number`
@@ -84,6 +84,7 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+ * 2015-01-24   v0.2.0   Update tfs-unlock dependency to v.0.2.0
  * 2013-06-02   v0.1.2   Add sleep for TFS to complete command
  * 2013-06-02   v0.1.1   Fix dependencies
  * 2013-06-02   v0.1.0   First stable release to npm
