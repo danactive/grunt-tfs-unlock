@@ -1,5 +1,10 @@
 # grunt-tfs-unlock
 
+[![npm version](https://badge.fury.io/js/grunt-tfs-unlock.svg)](http://badge.fury.io/js/grunt-tfs-unlock)
+[![Dependencies Status](https://david-dm.org/danactive/grunt-tfs-unlock.svg)](https://david-dm.org/danactive/grunt-tfs-unlock)
+[![DevDependencies Status](https://david-dm.org/danactive/grunt-tfs-unlock/dev-status.svg)](https://david-dm.org/danactive/grunt-tfs-unlock#info=devDependencies)
+[![MIT Licensed](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+
 > Checkout Windows TFS locked files with Team Foundation Server
 
 ## Getting Started
@@ -84,6 +89,7 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+ * 2015-02-16   v0.3.0   Update tfs-unlock dependency to v.0.3.x
  * 2015-01-24   v0.2.0   Update tfs-unlock dependency to v.0.2.0
  * 2013-06-02   v0.1.2   Add sleep for TFS to complete command
  * 2013-06-02   v0.1.1   Fix dependencies
