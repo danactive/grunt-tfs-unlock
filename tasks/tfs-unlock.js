@@ -17,10 +17,16 @@ module.exports = function(grunt) {
 		var tfs = require('./../node_modules/tfs-unlock/tfs-unlock.js'),
 			options = this.options();
 
-		tfs.init({
-			"callback": grunt.task.current.async(),
-			"visualStudioPath": tfs[options.tfsPath[0]][options.tfsPath[1]]
-		});
+		if (options.tfsPath && options.tfsPath.length >= 2) {
+			tfs.init({
+				"callback": grunt.task.current.async(),
+				"visualStudioPath": tfs[options.tfsPath[0]][options.tfsPath[1]]
+			});
+		} else {
+			tfs.init({
+				"callback": grunt.task.current.async()
+			});
+		}
 
 		// Iterate over all specified file groups.
 		this.files.forEach(function (file) {
