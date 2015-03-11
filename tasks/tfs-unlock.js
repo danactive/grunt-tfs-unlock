@@ -9,36 +9,34 @@
 'use strict';
 
 module.exports = function(grunt) {
-
-	// Please see the Grunt documentation for more information regarding task
-	// creation: http://gruntjs.com/creating-tasks
-
-	grunt.registerMultiTask('tfs-unlock', 'Checkout TFS files', function() {
-		var tfs = require('./../node_modules/tfs-unlock/tfs-unlock.js'),
-			options = this.options();
+	grunt.registerMultiTask('tfs-unlock', 'Checkout TFS files', function () {
+		var tfs = require('tfs-unlock'),
+			options = this.options(),
+			done = this.async();
 
 		if (options.tfsPath && options.tfsPath.length >= 2) {
 			tfs.init({
-				"callback": grunt.task.current.async(),
+				"callback": done,
 				"visualStudioPath": tfs[options.tfsPath[0]][options.tfsPath[1]]
 			});
 		} else {
 			tfs.init({
-				"callback": grunt.task.current.async()
+				"callback": done
 			});
 		}
 
 		// Iterate over all specified file groups.
-		this.files.forEach(function (file) {
-			file.src.filter(function (filepath) {
-				// Warn on and remove invalid source files (if nonull was set).
-				if (!grunt.file.exists(filepath)) {
-					grunt.log.warn('Source file "' + filepath + '" not found.');
-					return false;
-				}
-				console.log(tfs[options.action]([filepath]));
-				return true;
-			});
+		var files = this.filesSrc.filter(function(file) {
+			if (!grunt.file.exists(file)) {
+				grunt.log.warn('Source file "' + file + '" not found.');
+				return false;
+			}
+			return true;
+		});
+
+		tfs[options.action](files).catch(function(e) {
+			grunt.log.error(e.message);
+			done(false);
 		});
 	});
 };
