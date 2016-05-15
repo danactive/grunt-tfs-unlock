@@ -89,6 +89,7 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+ * 2016-05-15   v0.4.0   Update dependencies and dev-dependencies
  * 2015-03-11   v0.3.2   Improve error catching
  * 2015-03-11   v0.3.1   tfsPath is optional
  * 2015-02-16   v0.3.0   Update tfs-unlock dependency to v.0.3.x
