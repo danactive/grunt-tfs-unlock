@@ -19,6 +19,11 @@ module.exports = function(grunt) {
 				"callback": done,
 				"visualStudioPath": tfs[options.tfsPath[0]][options.tfsPath[1]]
 			});
+		} else if (options.customTfsPath) {
+			tfs.init({
+				"callback": done,
+				"visualStudioPath": options.customTfsPath
+			});
 		} else {
 			tfs.init({
 				"callback": done
